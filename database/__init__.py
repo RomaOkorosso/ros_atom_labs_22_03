@@ -1,2 +1,2 @@
 from database.db import Base, get_db, DATABASE_URL
-from database.models import GenderEnum, User
+from database.models import GenderEnum, User, Car, Manufacturer

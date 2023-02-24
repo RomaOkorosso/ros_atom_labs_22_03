@@ -12,7 +12,7 @@ POSTGRES_PORT = os.getenv("POSTGRES_PORT")
 POSTGRES_DB = os.getenv("POSTGRES_DB")
 
 DATABASE_URL = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}/{POSTGRES_DB}"
-engine = create_engine("postgresql://postgres:1234@localhost/ros_atom_labs")
+engine = create_engine(DATABASE_URL)
 
 Base = declarative_base()
 SessionLocal = sessionmaker(engine)

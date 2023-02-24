@@ -17,8 +17,8 @@ services:
       retries: 3
     command: "-p ${POSTGRES_PORT:-5432}"
     restart: always
-    networks:
-      - backend_db_network
+#    networks:
+#      - backend_db_network
 
   backend:
     build: .
@@ -27,15 +27,14 @@ services:
     ports:
       - "${PORT:-4000}:8000"
     environment:
-      PORT: ${PORT:-4000}
-      NAME: ${NAME}
+      PORT: "${PORT:-4000}:8000"
     restart: always
-    networks:
-      - backend_db_network
+#    networks:
+#      - backend_db_network
     depends_on:
       db:
         condition: service_healthy
 
-networks:
-  backend_db_network:
-    driver: bridge
+#networks:
+#  backend_db_network:
+#    driver: bridge
