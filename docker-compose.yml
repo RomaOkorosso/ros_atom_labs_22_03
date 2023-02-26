@@ -17,24 +17,14 @@ services:
       retries: 3
     command: "-p ${POSTGRES_PORT:-5432}"
     restart: always
-#    networks:
-#      - backend_db_network
 
   backend:
     build: .
     env_file:
-      - .env
+      - ".env"
     ports:
       - "${PORT:-4000}:8000"
-    environment:
-      PORT: "${PORT:-4000}:8000"
     restart: always
-#    networks:
-#      - backend_db_network
     depends_on:
       db:
         condition: service_healthy
-
-#networks:
-#  backend_db_network:
-#    driver: bridge
